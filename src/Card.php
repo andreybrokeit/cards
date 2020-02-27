@@ -2,6 +2,8 @@
 
 namespace Cards;
 
+include_once("Deck.php");
+
 
 /**
  * The Card class represents a single card
@@ -14,11 +16,25 @@ class Card
     
     public function __construct($suit, $rank)
     {
-        // assume that validation happens during deck generation or in some helper for simplicity
+        if (!$this->isValidSuit($suit) || !$this->isValidRank($rank)) {
+            throw new \Exception('Invalid card values');
+        }
+
         $this->suit = $suit;
         $this->rank = $rank;
-    } 
-    
+
+    }
+
+    protected function isValidSuit($suit): bool
+    {
+        return isset(Deck::$suits[$suit]);
+    }
+
+    protected function isValidRank($rank): bool
+    {
+        return isset(Deck::$ranks[$rank]);
+    }
+
     /**
      * Prints the type of card
      */
