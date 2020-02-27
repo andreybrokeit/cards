@@ -1,5 +1,7 @@
 <?php
+
 namespace Cards;
+
 include("Card.php");
 
 /**
@@ -13,19 +15,19 @@ class Hand
      */
     const HAND_SIZE = 5;
 
-  /**
-   * @var Card[]
-   */
+    /**
+     * @var Card[]
+     */
     protected $hand = [];
 
-  /**
-   * Adds a card to the hand
-   * @param Card $card
-   */
+    /**
+     * Adds a card to the hand
+     * @param Card $card
+     */
     public function addCard(Card $card)
     {
-      // outside app should decide based on game rules if added Card is within bounds
-      $this->hand[] = $card;
+        // outside app should decide based on game rules if added Card is within bounds
+        $this->hand[] = $card;
     }
 
     /**
@@ -33,9 +35,33 @@ class Hand
      */
     public function display()
     {
-      foreach ($this->hand as $card) {
-        $card->display();
-      }
+        foreach ($this->hand as $card) {
+            $card->display();
+        }
     }
 
+    /**
+     * sorts the cards by suit (see intro for suit order), and then by value (see intro for value order)
+     */
+    public function sortBySuit()
+    {
+
+    }
+
+    /**
+     *
+     */
+    public function sortByValue()
+    {
+
+    }
+
+    /**
+     * @param $len
+     * @param bool $isSameSuit
+     */
+    public function hasStraight($len, $isSameSuit = false)
+    {
+
+    }
 }
