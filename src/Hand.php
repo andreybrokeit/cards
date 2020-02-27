@@ -2,19 +2,13 @@
 
 namespace Cards;
 
-include("Card.php");
+include_once("Card.php");
 
 /**
  * The Hand class represents a set of cards
  */
 class Hand
 {
-    /**
-     * Size of the hand, could be changed or add another const
-     * Or make it a dynamic variable based on the type of the game with getter/setter
-     */
-    const HAND_SIZE = 5;
-
     /**
      * @var Card[]
      */
@@ -37,6 +31,7 @@ class Hand
     {
         foreach ($this->hand as $card) {
             $card->display();
+            echo ' ';
         }
     }
 
