@@ -26,4 +26,9 @@ class Card
     {
         echo $this->rank . $this->suit;
     }
+
+    public function __toString()
+    {
+        return $this->rank . $this->suit;
+    }
 }
