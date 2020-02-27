@@ -2,7 +2,7 @@
 namespace Cards;
 
 
-include ('Card.php');
+include_once ('Card.php');
 
 /**
  *  The Deck class represents a standard 52-card deck; Ace high
@@ -14,31 +14,44 @@ class Deck
  * The D and ND cards each have their own order - When created, all 52 cards are ND, and are in order, by suit
  * (clubs 2 through A, diamonds 2 through A, hearts 2 through A, spades 2 through A)
  */
-    
-    // I feel like deck is a collection of cards and should decide on values, card i sjust a holder of those values, flexible
-    protected $ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-    protected $suits = ['C', 'D', 'H', 'S'];
 
-    // dealt cards
-    protected $d = [];
+    // hashes for quick lookup/validation
+    public static $ranks = ["2" => 1, "3" => 1, "4" => 1, "5" => 1, "6" => 1, "7" => 1, "8" => 1, "9" => 1, "10" => 1, "J" => 1, "Q" => 1, "K" => 1, "A" => 1];
 
+    public static $suits = ['C' => 1, 'D' => 1, 'H' => 1, 'S' => 1];
+
+    /**
+     * dealt cards
+     * @var Card[]
+     */
+    protected $d = []; // we could implement CardCollections class but for the sake of simplicity use array
+
+    /**
+     * not yet dealt cards
+     * @var Card[]
+     */
     protected $nd = [];
 
     public function __construct()
     {
-        foreach ($this->suits as $suit) {
-            foreach ($this->ranks as $rank) {
+        foreach (self::$suits as $suit => $s) {
+            foreach (self::$ranks as $rank => $r) {
                 $this->nd[] = new Card($suit, $rank);
             }
         }
-    } 
+    }
 
     /**
      * Moves the top card from NotDealt to Dealt and returns the card
+     * @return Card|null
+     *
      */
-    public function dealOne()
+    public function dealOne(): ?Card
     {
+        $card = array_shift($this->nd);
+        $this->d[] = $card;
 
+        return $card; // just return null, I don't think we should throw errors on empty deck.
     }
 
     /**
@@ -47,14 +60,18 @@ class Deck
     public function display()
     {
         echo 'Not Dealt: ';
+
         foreach ($this->nd as $card) {
             echo $card->display() . ' ';
         }
         echo "\n";
+
         echo 'Dealt: ';
+
         foreach ($this->d as $card) {
             echo $card->display() . ' ';
         }
+
         echo "\n";
     }
     /**
@@ -62,6 +79,11 @@ class Deck
      */
     public function shuffle()
     {
-        
+        $deckLen = count($this->nd); // 52
+        for($i = $deckLen - 1; $i >= 0; $i--) {
+            $j = rand(0, $i+1);
+
+            [$this->nd[$i], $this->nd[$j]] = [$this->nd[$j], $this->nd[$i]];
+        }
     }
 }
