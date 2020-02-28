@@ -23,10 +23,6 @@ class DeckTest extends TestCase
     {
         $this->newDeck = new \Cards\Deck();
     }
-    public function tearDown(): void
-    {
-        $this->newDeck = new \Cards\Deck();
-    }
 
     // default deck in order
     public function testDeckCreation()

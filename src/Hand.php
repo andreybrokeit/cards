@@ -36,6 +36,17 @@ class Hand
         }
     }
 
+    public function __toString(): string
+    {
+        $result = $sp = '';
+        foreach ($this->hand as $card) {
+            $result .= $sp . $card;
+            $sp = ' ';
+        }
+
+        return $result;
+    }
+
     /**
      * sorts the cards by suit (see intro for suit order), and then by value (see intro for value order)
      */
