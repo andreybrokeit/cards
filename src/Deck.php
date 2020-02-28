@@ -16,9 +16,9 @@ class Deck
  */
 
     // hashes for quick lookup/validation
-    public static $ranks = ["2" => 1, "3" => 1, "4" => 1, "5" => 1, "6" => 1, "7" => 1, "8" => 1, "9" => 1, "10" => 1, "J" => 1, "Q" => 1, "K" => 1, "A" => 1];
+    public static $ranks = ["2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10, "J" => 11, "Q" => 12, "K" => 13, "A" => 14];
 
-    public static $suits = ['C' => 1, 'D' => 1, 'H' => 1, 'S' => 1];
+    public static $suits = ['C' => 0, 'D' => 1, 'H' => 2, 'S' => 3];
 
     /**
      * dealt cards
@@ -52,6 +52,15 @@ class Deck
         $this->d[] = $card;
 
         return $card; // just return null, I don't think we should throw errors on empty deck.
+    }
+
+    /**
+     * Shows the number of remaining cads
+     * @return int
+     */
+    public function cardsLeft(): int
+    {
+        return count($this->nd);
     }
 
     /**
