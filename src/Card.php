@@ -47,4 +47,20 @@ class Card
     {
         return $this->rank . $this->suit;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSuitOrder()
+    {
+        return Deck::$suits[$this->suit];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRankOrder()
+    {
+        return Deck::$ranks[$this->rank];
+    }
 }
