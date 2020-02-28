@@ -17,7 +17,7 @@ class Card
     public function __construct($suit, $rank)
     {
         if (!$this->isValidSuit($suit) || !$this->isValidRank($rank)) {
-            throw new \Exception('Invalid card values');
+            throw new \InvalidArgumentException('Invalid card values');
         }
 
         $this->suit = $suit;
