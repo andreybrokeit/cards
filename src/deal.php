@@ -7,6 +7,11 @@ include_once ('Hand.php');
 $number = $argv[1] ?? 2;
 $handSize = $argv[2] ?? 5;
 
+if ($number * $handSize > 52) {
+    echo "\n incorrect amount of cards to deal - greater than a deck size \n";
+    return;
+}
+
 $deck = new Deck();
 
 /**
