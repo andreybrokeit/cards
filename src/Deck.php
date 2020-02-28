@@ -95,4 +95,20 @@ class Deck
             [$this->nd[$i], $this->nd[$j]] = [$this->nd[$j], $this->nd[$i]];
         }
     }
+
+    /**
+     * @return Card[]
+     */
+    public function getDealt(): array
+    {
+        return $this->d;
+    }
+
+    /**
+     * @return Card[]
+     */
+    public function getNotDealt(): array
+    {
+        return $this->nd;
+    }
 }
