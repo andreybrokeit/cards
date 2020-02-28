@@ -6,6 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CardTest' => $baseDir . '/tests/CardTest.php',
+    'Cards\\Card' => $baseDir . '/src/Card.php',
+    'Cards\\Deck' => $baseDir . '/src/Deck.php',
+    'Cards\\Hand' => $baseDir . '/src/Hand.php',
+    'DeckTest' => $baseDir . '/tests/DeckTest.php',
+    'HandTest' => $baseDir . '/tests/HandTest.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',

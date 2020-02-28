@@ -2,7 +2,7 @@
 
 namespace Cards;
 
-include_once("Card.php");
+require_once("Card.php");
 
 
 /**

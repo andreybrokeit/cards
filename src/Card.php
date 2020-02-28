@@ -2,7 +2,7 @@
 
 namespace Cards;
 
-include_once("Deck.php");
+require_once("Deck.php");
 
 
 /**

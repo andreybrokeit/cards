@@ -1,9 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once "../src/Hand.php";
-require_once "../src/Card.php";
-
 
 /**
  * Class HandTest

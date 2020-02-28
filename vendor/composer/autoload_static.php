@@ -65,6 +65,12 @@ class ComposerStaticInitd1f5b328df0b6085881acad2e3a64927
     );
 
     public static $classMap = array (
+        'CardTest' => __DIR__ . '/../..' . '/tests/CardTest.php',
+        'Cards\\Card' => __DIR__ . '/../..' . '/src/Card.php',
+        'Cards\\Deck' => __DIR__ . '/../..' . '/src/Deck.php',
+        'Cards\\Hand' => __DIR__ . '/../..' . '/src/Hand.php',
+        'DeckTest' => __DIR__ . '/../..' . '/tests/DeckTest.php',
+        'HandTest' => __DIR__ . '/../..' . '/tests/HandTest.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',

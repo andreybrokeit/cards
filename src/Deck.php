@@ -2,7 +2,7 @@
 namespace Cards;
 
 
-include_once ('Card.php');
+require_once ('Card.php');
 
 /**
  *  The Deck class represents a standard 52-card deck; Ace high
