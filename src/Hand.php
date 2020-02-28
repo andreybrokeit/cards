@@ -4,6 +4,7 @@ namespace Cards;
 
 include_once("Card.php");
 
+
 /**
  * The Hand class represents a set of cards
  */
@@ -40,7 +41,22 @@ class Hand
      */
     public function sortBySuit()
     {
+        usort($this->hand, function (Card $a, Card $b)
+        {
+            if ($a->getSuitOrder() == $b->getSuitOrder()) {
+                if ($a->getRankOrder() < $b->getRankOrder()) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
 
+            if ($a->getSuitOrder() < $b->getSuitOrder()) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
     }
 
     /**
@@ -48,15 +64,48 @@ class Hand
      */
     public function sortByValue()
     {
+        usort($this->hand, function (Card $a, Card $b)
+        {
+            if ($a->getRankOrder() == $b->getRankOrder()) {
+                if ($a->getSuitOrder() < $b->getSuitOrder()) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+
+            if ($a->getRankOrder() < $b->getRankOrder()) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
 
     }
 
     /**
      * @param $len
      * @param bool $isSameSuit
+     * @return bool
      */
-    public function hasStraight($len, $isSameSuit = false)
+    public function hasStraight($len, $isSameSuit = false): bool
     {
+        if ($isSameSuit) {
+            $this->sortBySuit();
+        } else {
+            $this->sortByValue();
+        }
 
+        for ($i = 0; $i < $len-1; $i++ ) {
+            if ($this->hand[$i]->getRankOrder() + 1 != $this->hand[$i+1]->getRankOrder()) {
+                return false;
+            } elseif ($isSameSuit) {
+                if ($this->hand[$i]->getSuitOrder() != $this->hand[$i+1]->getSuitOrder()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
