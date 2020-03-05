@@ -44,3 +44,9 @@ Write your own custom sort algorithm. Be prepared to explain how it works.
 **hasStraight(len, sameSuit)** - returns true if hand contains a straight of the given length.
 If sameSuit is true, counts only straights with cards in the same suit (flushes);
 If sameSuit if not true, any straight is counted
+
+
+### Tests
+to run tests simply run unitest command  `./vendor/bin/phpunit ./tests/`
+
+to run a specific test - add it at the end of the command above
